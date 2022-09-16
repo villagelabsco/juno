@@ -5,6 +5,7 @@ import (
 
 	"github.com/gogo/protobuf/proto"
 
+	wasmtypes "github.com/CosmWasm/wasmd/x/wasm/types"
 	crisistypes "github.com/cosmos/cosmos-sdk/x/crisis/types"
 	evidencetypes "github.com/cosmos/cosmos-sdk/x/evidence/types"
 	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
@@ -55,6 +56,7 @@ var CosmosMessageAddressesParser = JoinMessageParsers(
 	IBCTransferMessagesParser,
 	SlashingMessagesParser,
 	StakingMessagesParser,
+	WasmMessagesParser,
 	DefaultMessagesParser,
 )
 
@@ -225,6 +227,19 @@ func StakingMessagesParser(_ codec.Codec, cosmosMsg sdk.Msg) ([]string, error) {
 
 	case *stakingtypes.MsgUndelegate:
 		return []string{msg.DelegatorAddress, msg.ValidatorAddress}, nil
+
+	}
+
+	return nil, MessageNotSupported(cosmosMsg)
+}
+
+// WasmMessagesParser returns the list of all the accounts involved in the given
+// message if it's related to the x/wasm module
+func WasmMessagesParser(_ codec.Codec, cosmosMsg sdk.Msg) ([]string, error) {
+	switch msg := cosmosMsg.(type) {
+
+	case *wasmtypes.MsgExecuteContract:
+		return []string{msg.Contract, msg.Sender}, nil
 
 	}
 
