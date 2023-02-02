@@ -7,10 +7,10 @@ import (
 
 	crisistypes "github.com/cosmos/cosmos-sdk/x/crisis/types"
 	evidencetypes "github.com/cosmos/cosmos-sdk/x/evidence/types"
-	govtypes "github.com/cosmos/cosmos-sdk/x/gov/types"
+	govbeta1types "github.com/cosmos/cosmos-sdk/x/gov/types/v1beta1"
 	slashingtypes "github.com/cosmos/cosmos-sdk/x/slashing/types"
-	ibctransfertypes "github.com/cosmos/ibc-go/v3/modules/apps/transfer/types"
-	channeltypes "github.com/cosmos/ibc-go/v3/modules/core/04-channel/types"
+	ibctransfertypes "github.com/cosmos/ibc-go/v6/modules/apps/transfer/types"
+	channeltypes "github.com/cosmos/ibc-go/v6/modules/core/04-channel/types"
 
 	"github.com/cosmos/cosmos-sdk/codec"
 	sdk "github.com/cosmos/cosmos-sdk/types"
@@ -142,10 +142,10 @@ func EvidenceMessagesParser(_ codec.Codec, cosmosMsg sdk.Msg) ([]string, error) 
 func GovMessagesParser(cdc codec.Codec, cosmosMsg sdk.Msg) ([]string, error) {
 	switch msg := cosmosMsg.(type) {
 
-	case *govtypes.MsgSubmitProposal:
+	case *govbeta1types.MsgSubmitProposal:
 		addresses := []string{msg.Proposer}
 
-		var content govtypes.Content
+		var content govbeta1types.Content
 		err := cdc.UnpackAny(msg.Content, &content)
 		if err != nil {
 			return nil, err
@@ -159,10 +159,10 @@ func GovMessagesParser(cdc codec.Codec, cosmosMsg sdk.Msg) ([]string, error) {
 
 		return addresses, nil
 
-	case *govtypes.MsgDeposit:
+	case *govbeta1types.MsgDeposit:
 		return []string{msg.Depositor}, nil
 
-	case *govtypes.MsgVote:
+	case *govbeta1types.MsgVote:
 		return []string{msg.Voter}, nil
 
 	}
