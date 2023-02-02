@@ -4,20 +4,20 @@ import (
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	sdk "github.com/cosmos/cosmos-sdk/types"
 
-	"github.com/forbole/juno/v4/node"
+	"github.com/villagelabsco/juno/v4/node"
 
-	"github.com/forbole/juno/v4/modules/telemetry"
+	"github.com/villagelabsco/juno/v4/modules/telemetry"
 
-	"github.com/forbole/juno/v4/logging"
+	"github.com/villagelabsco/juno/v4/logging"
 
-	"github.com/forbole/juno/v4/types/config"
+	"github.com/villagelabsco/juno/v4/types/config"
 
-	"github.com/forbole/juno/v4/modules/pruning"
+	"github.com/villagelabsco/juno/v4/modules/pruning"
 
-	"github.com/forbole/juno/v4/modules"
-	"github.com/forbole/juno/v4/modules/messages"
+	"github.com/villagelabsco/juno/v4/modules"
+	"github.com/villagelabsco/juno/v4/modules/messages"
 
-	"github.com/forbole/juno/v4/database"
+	"github.com/villagelabsco/juno/v4/database"
 )
 
 // Context represents the context of the modules registrar

@@ -13,7 +13,7 @@ import (
 	"github.com/cosmos/cosmos-sdk/store"
 	sdktypes "github.com/cosmos/cosmos-sdk/store/types"
 	sdk "github.com/cosmos/cosmos-sdk/types"
-	"github.com/forbole/juno/v4/node"
+	"github.com/villagelabsco/juno/v4/node"
 	"github.com/spf13/viper"
 	cfg "github.com/tendermint/tendermint/config"
 	"github.com/tendermint/tendermint/libs/log"

@@ -8,16 +8,16 @@ import (
 
 	"github.com/jmoiron/sqlx"
 
-	"github.com/forbole/juno/v4/logging"
+	"github.com/villagelabsco/juno/v4/logging"
 
 	"github.com/cosmos/cosmos-sdk/simapp/params"
 	"github.com/lib/pq"
 
-	"github.com/forbole/juno/v4/database"
-	"github.com/forbole/juno/v4/types"
-	"github.com/forbole/juno/v4/types/config"
-	"github.com/forbole/juno/v4/types/env"
-	"github.com/forbole/juno/v4/types/utils"
+	"github.com/villagelabsco/juno/v4/database"
+	"github.com/villagelabsco/juno/v4/types"
+	"github.com/villagelabsco/juno/v4/types/config"
+	"github.com/villagelabsco/juno/v4/types/env"
+	"github.com/villagelabsco/juno/v4/types/utils"
 )
 
 // Builder creates a database connection with the given database connection info
